@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.madcampweek1.databinding.ActivityMainBinding
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +24,14 @@ class MainActivity : AppCompatActivity() {
         TabLayoutMediator(binding.tabs, binding.viewPagerContainer) { tab, pos ->
             tab.text = tabTextList[pos]
         }.attach()
+
+
+//        val json = assets.open("studentInfo.json").reader().readText()
+//        val data = JSONObject(json).getJSONObject("studentList")
+//
+//        val listStore = data.getJSONArray("store_list")
+
+
 
         binding.viewPagerContainer.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             var currentState = 0

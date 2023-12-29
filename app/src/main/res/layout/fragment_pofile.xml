@@ -8,11 +8,10 @@
     android:background="#5fff00"
     tools:context=".Profile">
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test text"
-        android:textSize="32sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_items"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/profile_items" />
 
 </FrameLayout>
