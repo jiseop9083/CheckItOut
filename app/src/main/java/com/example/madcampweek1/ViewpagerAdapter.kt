@@ -11,8 +11,8 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity): FragmentStateAdapter
     override fun createFragment(position: Int): Fragment {
         return when(position) {
             0 -> Profile()
-            1 -> Calendar()
-            else -> Picture()
+            1 -> Picture()
+            else -> Calendar()
         }
     }
 }
