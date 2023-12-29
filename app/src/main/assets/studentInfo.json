@@ -1,17 +1,24 @@
 {
   "studentList": [
     {
-      "studentId" : 12345678,
+      "studentID" : 12345678,
       "phoneNumber": "010-1234-5678",
       "name": "jiseop",
       "major": "ComputerScience",
       "image": "dfdkfdfd.png"
     },
     {
-      "studentId" : 98765432,
+      "studentID" : 20190158,
       "phoneNumber": "010-5678-5678",
       "name": "jiseop2",
       "major": "IndustrialDesign",
+      "image": "dfdkfdfd.png"
+    },
+    {
+      "studentID" : 20190158,
+      "phoneNumber": "010-4139-5901",
+      "name": "Janu Kim",
+      "major": "ComputerScience",
       "image": "dfdkfdfd.png"
     }
   ]

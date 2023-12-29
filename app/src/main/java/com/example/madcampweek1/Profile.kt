@@ -26,27 +26,28 @@ class Profile : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPofileBinding.inflate(inflater, container, false)
-       // val activity = activity as MainActivity?
+        val activity = activity as MainActivity?
 
 
-        //val json = activity!!.getAssets().open("studentInfo.json").reader().readText()
-        //val data = JSONObject(json).getJSONObject("studentList")
-       // var jsonArray = JSONObject(json).getJSONArray("studentList")
+        val json = activity!!.getAssets().open("studentInfo.json").reader().readText()
+       // val data = JSONObject(json).getJSONObject("studentList")
+        var jsonArray = JSONObject(json).getJSONArray("studentList")
 
-       // val dataSet: ArrayList<ProfileDTO> = ArrayList()
-        /*for (i in 0 until jsonArray.length()) {
+        val dataSet: ArrayList<ProfileDTO> = ArrayList()
+        for (i in 0 until jsonArray.length()) {
             val name = jsonArray.getJSONObject(i).getString("name")
-            val phoneNumber = jsonArray.getJSONObject(i).getString("phone_number")
+            val phoneNumber = jsonArray.getJSONObject(i).getString("phoneNumber")
             val studentID = jsonArray.getJSONObject(i).getString("studentID")
-            val major = jsonArray.getJSONObject(i).getString("major")
+            val major: Major = Major.valueOf(jsonArray.getJSONObject(i).getString("major"))
+           // val major = jsonArray.getJSONObject(i).getString("major")
             dataSet.add(ProfileDTO(name = name,
                 studentID = studentID.toInt(),
                 phoneNumber=phoneNumber,
-                major=  Major.ComputerScience))
+                major=  major))
         }
-*/
 
-        val dataSet: ArrayList<ProfileDTO> = arrayListOf(
+
+        /*val dataSet: ArrayList<ProfileDTO> = arrayListOf(
             ProfileDTO(name = "jiseop",
                 studentID = 2020052633,
                 phoneNumber="010-2468-9083",
@@ -75,7 +76,7 @@ class Profile : Fragment() {
                 studentID = 2020052633,
                 phoneNumber="010-2468-9083",
                 major= Major.ComputerScience),
-        )
+        )*/
 
 
 
