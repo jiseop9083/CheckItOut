@@ -3,43 +3,55 @@ package com.example.madcampweek1
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.madcampweek1.databinding.ActivityMainBinding
-import com.google.android.material.tabs.TabLayout
-import android.R
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MainActivity : AppCompatActivity() {
 
+    // lateinit는 var
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
+
+    private val tabTextList = listOf("Profile", "Search", "Setting")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        binding.viewPagerContainer.adapter = ViewPagerAdapter(this)
 
-        setTabLayout()
-    }
+        TabLayoutMediator(binding.tabs, binding.viewPagerContainer) { tab, pos ->
+            tab.text = tabTextList[pos]
+        }.attach()
 
-    private fun setTabLayout() {
-        // 초기 tab 세팅
-        binding.tabLayoutContainer.setBackgroundResource(R.color.black)
-        //storeFragmentTablayout
-        binding.tabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            // tab이 선택되었을 때
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                when (tab!!.position) {
-                    0 -> binding.tabLayoutContainer.setBackgroundResource(R.color.holo_purple)
-                    1 -> binding.tabLayoutContainer.setBackgroundResource(R.color.black)
-                    2 -> binding.tabLayoutContainer.setBackgroundResource(R.color.holo_green_light)
-                    3 -> binding.tabLayoutContainer.setBackgroundResource(R.color.holo_blue_bright)
+        binding.viewPagerContainer.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
+            var currentState = 0
+            var currentPos = 0
+
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+                if(currentState == ViewPager2.SCROLL_STATE_DRAGGING && currentPos == position) {
+
+                    if(currentPos == 0) binding.viewPagerContainer.currentItem = 2
+                    else if(currentPos == 2) binding.viewPagerContainer.currentItem = 0
+                    else currentPos++
                 }
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
             }
-            // tab이 선택되지 않았을 때
-            override fun onTabUnselected(tab: TabLayout.Tab?) {
 
+            override fun onPageSelected(position: Int) {
+                currentPos = position
+                super.onPageSelected(position)
             }
-            // tab이 다시 선택되었을 때
-            override fun onTabReselected(tab: TabLayout.Tab?) {
 
+            override fun onPageScrollStateChanged(state: Int) {
+                currentState = state
+                super.onPageScrollStateChanged(state)
             }
         })
     }
+
 }
