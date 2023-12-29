@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private val tabTextList = listOf("Profile", "Search", "Setting")
+    private val tabTextList = listOf("Profile", "Picture", "Calendar")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +33,7 @@ class MainActivity : AppCompatActivity() {
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                if(currentState == ViewPager2.SCROLL_STATE_DRAGGING && currentPos == position) {
 
-                    if(currentPos == 0) binding.viewPagerContainer.currentItem = 2
-                    else if(currentPos == 2) binding.viewPagerContainer.currentItem = 0
-                    else currentPos++
-                }
                 super.onPageScrolled(position, positionOffset, positionOffsetPixels)
             }
 

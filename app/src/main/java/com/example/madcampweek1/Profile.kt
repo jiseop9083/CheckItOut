@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.example.madcampweek1.databinding.FragmentAttendanceBinding
 
 
-class Attendance : Fragment() {
+class Profile : Fragment() {
     private lateinit var binding: FragmentAttendanceBinding
 
     override fun onCreateView(

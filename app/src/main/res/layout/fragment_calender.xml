@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#5fff00"
-    tools:context=".Profile">
+    android:background="#5fffff"
+    tools:context=".Calendar">
 
-    <TextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test text"
-        android:textSize="32sp" />
+<TextView
+    android:id="@+id/test"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="test text"
+    android:textSize="32sp" />
 
 </FrameLayout>
