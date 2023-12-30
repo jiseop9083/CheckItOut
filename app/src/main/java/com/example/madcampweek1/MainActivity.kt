@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.example.madcampweek1.databinding.ActivityMainBinding
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
 

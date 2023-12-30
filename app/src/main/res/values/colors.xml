@@ -9,5 +9,5 @@
     <color name="darkGrey">#FF666666</color>
     <color name="lightGrey">#FFD9D9D9</color>
     <color name="transparent">#88000000</color> <!-- image color -->
-    <color name="red">#88FF5263</color>
+    <color name="red">#FFFF5263</color>
 </resources>

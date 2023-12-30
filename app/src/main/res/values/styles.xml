@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name = "day_text_view">
-        <item name = "android:textSize">20dp</item>
-        <item name = "android:textColor">@color/blue</item>
+    <style name="DateTextStyle" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/darkBlue</item>
+    </style>
+    <style name="LightColorDateTextStyle" parent="@style/Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/lightGrey</item>
+    </style>
+    <style name="RoundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20dp</item>
     </style>
 </resources>
