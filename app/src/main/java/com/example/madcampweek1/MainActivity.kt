@@ -15,23 +15,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val tabTextList = listOf("Profile", "Picture", "Calendar")
+    private val tabIconList = listOf(R.drawable.profile, R.drawable.check, R.drawable.calendar)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        val i = binding.tabs.tabCount.toInt()
+        binding.title.text = tabTextList[i]
         binding.viewPagerContainer.adapter = ViewPagerAdapter(this)
-
         TabLayoutMediator(binding.tabs, binding.viewPagerContainer) { tab, pos ->
             tab.text = tabTextList[pos]
+            tab.setIcon(tabIconList[pos])
         }.attach()
-
-
-//        val json = assets.open("studentInfo.json").reader().readText()
-//        val data = JSONObject(json).getJSONObject("studentList")
-//
-//        val listStore = data.getJSONArray("store_list")
-
-
 
         binding.viewPagerContainer.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             var currentState = 0

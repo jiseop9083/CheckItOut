@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#5fff00"
     tools:context=".Profile">
 
     <androidx.recyclerview.widget.RecyclerView
