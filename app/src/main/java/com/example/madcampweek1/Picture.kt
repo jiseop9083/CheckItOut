@@ -9,7 +9,6 @@ import com.example.madcampweek1.databinding.FragmentPictureBinding
 import android.widget.GridView
 import android.widget.Toast
 
-
 class Picture : Fragment() {
     private lateinit var binding: FragmentPictureBinding
 

@@ -7,42 +7,11 @@
     android:background="#ffffff"
     tools:context=".Picture">
 
-<!--    <TextView-->
-<!--        android:id="@+id/test2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="test text2!!!!!"-->
-<!--        android:textSize="32sp" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="200dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        android:src="@drawable/picture1"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView2"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:src="@drawable/picture2"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
-
     <GridView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/gridView"
-        android:numColumns="3"/>
-<!--    android:layout_marginHorizontal="0dp"-->
-<!--    android:layout_marginLeft="0dp"-->
-<!--    android:layout_marginRight="0dp"-->
-<!--    android:columnWidth="100dp"-->
+        android:numColumns="2"/>
 
 
 </FrameLayout>
