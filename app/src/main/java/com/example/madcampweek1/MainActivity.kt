@@ -25,14 +25,6 @@ class MainActivity : AppCompatActivity() {
             tab.text = tabTextList[pos]
         }.attach()
 
-
-//        val json = assets.open("studentInfo.json").reader().readText()
-//        val data = JSONObject(json).getJSONObject("studentList")
-//
-//        val listStore = data.getJSONArray("store_list")
-
-
-
         binding.viewPagerContainer.registerOnPageChangeCallback(object: ViewPager2.OnPageChangeCallback() {
             var currentState = 0
             var currentPos = 0
