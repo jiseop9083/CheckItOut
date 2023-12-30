@@ -38,51 +38,11 @@ class Profile : Fragment() {
             val name = jsonArray.getJSONObject(i).getString("name")
             val phoneNumber = jsonArray.getJSONObject(i).getString("phoneNumber")
             val studentID = jsonArray.getJSONObject(i).getString("studentID")
-            val major: Major = Major.valueOf(jsonArray.getJSONObject(i).getString("major"))
-           // val major = jsonArray.getJSONObject(i).getString("major")
+            //val major: Major = Major.valueOf(jsonArray.getJSONObject(i).getString("major"))
             dataSet.add(ProfileDTO(name = name,
                 studentID = studentID.toInt(),
-                phoneNumber=phoneNumber,
-                major=  major))
+                phoneNumber=phoneNumber))
         }
-
-
-        /*val dataSet: ArrayList<ProfileDTO> = arrayListOf(
-            ProfileDTO(name = "jiseop",
-                studentID = 2020052633,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-            ProfileDTO(name = "jiseop2",
-                studentID = 200526323,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-            ProfileDTO(name = "jiseop3",
-                studentID = 2020523223,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-            ProfileDTO(name = "jiseop4",
-                studentID = 2025264433,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-            ProfileDTO(name = "jiseop",
-                studentID = 2020052633,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-            ProfileDTO(name = "jiseop",
-                studentID = 2020052633,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-            ProfileDTO(name = "jiseop",
-                studentID = 2020052633,
-                phoneNumber="010-2468-9083",
-                major= Major.ComputerScience),
-        )*/
-
-
-
-
-
-
         profileAdapter = ProfileAdapter(dataSet)
         binding.profileItems.layoutManager = LinearLayoutManager(activity)
         binding.profileItems.adapter = profileAdapter

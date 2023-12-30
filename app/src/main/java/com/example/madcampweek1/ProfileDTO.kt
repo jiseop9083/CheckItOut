@@ -4,7 +4,6 @@ data class ProfileDTO(
     val name: String,
     val studentID: Int,
     val phoneNumber: String,
-    val major: Major
 )
 
 enum class Major {
