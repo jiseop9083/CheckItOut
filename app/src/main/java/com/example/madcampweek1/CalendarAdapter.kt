@@ -72,7 +72,23 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             // date 구하기
             var dateString: String = SimpleDateFormat("dd", Locale.KOREA).format(date)
             var dateInt = dateString.toInt()
-            if (dataList[position] == dateInt) {
+
+            // TODO: refactoring: remove duplicated code
+            val datetime: String = SimpleDateFormat("yyyy년MM월",
+                Locale.KOREA
+            ).format(date.time)
+
+            val date = java.util.Calendar.getInstance().run {
+                add(java.util.Calendar.MONTH, 0)
+                time
+            }
+            // 포맷 적용
+            var realdatetime: String = SimpleDateFormat(
+                "yyyy년MM월",
+                Locale.KOREA
+            ).format(date.time)
+
+            if (dataList[position] == dateInt && datetime == realdatetime) {
                 itemCalendarDateText.setTypeface(itemCalendarDateText.typeface, Typeface.BOLD)
             }
 

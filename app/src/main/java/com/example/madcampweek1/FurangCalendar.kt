@@ -1,5 +1,7 @@
 package com.example.madcampweek1
 
+// date를 관리하는 클래스
+
 import java.util.Calendar
 import java.util.Date
 
