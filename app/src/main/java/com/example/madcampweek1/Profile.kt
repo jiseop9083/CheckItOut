@@ -39,14 +39,13 @@ class Profile : Fragment() {
             val phoneNumber = jsonArray.getJSONObject(i).getString("phoneNumber")
             val studentID = jsonArray.getJSONObject(i).getString("studentID")
             //val major: Major = Major.valueOf(jsonArray.getJSONObject(i).getString("major"))
-            dataSet.add(ProfileDTO(name = name,
-                studentID = studentID.toInt(),
+            dataSet.add(ProfileDTO(name=name,
+                studentID=studentID.toInt(),
                 phoneNumber=phoneNumber))
         }
         profileAdapter = ProfileAdapter(dataSet)
         binding.profileItems.layoutManager = LinearLayoutManager(activity)
         binding.profileItems.adapter = profileAdapter
-
 
         return binding.root
     }
