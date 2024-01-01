@@ -33,7 +33,7 @@ class Calendar : Fragment() {
         calendarViewPager.adapter = calendarPagerAdapter
         calendarViewPager.orientation = ViewPager2.ORIENTATION_VERTICAL
 
-        // something wrong!!!
+
         calendarPagerAdapter.apply {
             calendarViewPager.setCurrentItem(this.fragmentPosition, true)
         }

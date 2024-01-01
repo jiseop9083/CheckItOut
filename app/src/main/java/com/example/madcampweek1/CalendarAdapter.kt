@@ -46,18 +46,24 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         holder.itemView.layoutParams.height = h
 
         holder?.bind(dataList[position], position, context)
-        if (itemClick != null) {
-            holder?.itemView?.setOnClickListener {
-                object : View.OnClickListener {
-                    override fun onClick(v: View?) {
-                        Log.d("tag", "hello")
-                    }
-                }
-            }
+        holder.itemView.setOnClickListener {
+            // implement
+        }
+        holder?.itemCalendarDateText?.setOnClickListener {
+            // implement
+        }
+
+        holder?.itemCalendarAbsenceBtn?.setOnClickListener {
+            // implement
+        }
+        holder?.itemCalendarAttendBtn?.setOnClickListener {
+            // implement
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarItemHolder {
+        // 일반적으로 false로 설정해 자식 view를 동적으로 첨부함
+        // true설정하면 자식이 match_parent로 설정되어있으면 height가 충돌해 illegalStateException 발생
         val view =
             LayoutInflater.from(context).inflate(R.layout.calendar_item, parent, false)
         return CalendarItemHolder(view)
@@ -67,9 +73,9 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
     inner class CalendarItemHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
-        private var itemCalendarDateText: TextView = itemView!!.findViewById(R.id.item_calendar_date_text)
-        private var itemCalendarAttendBtn: Button = itemView!!.findViewById(R.id.attend_btn)
-        private var itemCalendarAbsenceBtn: Button = itemView!!.findViewById(R.id.absence_btn)
+        var itemCalendarDateText: TextView = itemView!!.findViewById(R.id.item_calendar_date_text)
+        var itemCalendarAttendBtn: Button = itemView!!.findViewById(R.id.attend_btn)
+        var itemCalendarAbsenceBtn: Button = itemView!!.findViewById(R.id.absence_btn)
 
 
 
