@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.appcompat.app.AppCompatActivity
 
 import android.database.Cursor
+import android.util.Log
 import java.util.ArrayList
 
 class Picture : Fragment() {
@@ -46,11 +47,9 @@ class Picture : Fragment() {
         if (checkGalleryPermission()) {
             loadImages()
         } else {
+            // TODO: permission 요청하고 나서 loadImage 불러올 수 있도록 하기
+            // onDestroyView 한 후 onCreateView 호출
             requestGalleryPermission()
-        }
-
-        binding.gridView.setOnItemClickListener { _, _, position, _ ->
-            Toast.makeText(requireActivity(), "You Clicked on ${names[position]}", Toast.LENGTH_SHORT).show()
         }
 
         return binding.root
@@ -73,6 +72,7 @@ class Picture : Fragment() {
             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
             GALLERY_PERMISSION_REQUEST // 권한 요청 결과 구분/처리 위한 상수
         )
+        
     }
 
     private fun loadImages() {
@@ -83,7 +83,7 @@ class Picture : Fragment() {
         val cursor = requireActivity().contentResolver.query( // contentResolver: 앱이 data에 접근하기 위한 interface 역할
             MediaStore.Images.Media.EXTERNAL_CONTENT_URI, // 이미지 URI. 메타데이터 포함 다양한 정보
             projection, // 가져올 data의 column
-            "${MediaStore.Images.Media.DISPLAY_NAME} LIKE ?", // 필터링 조건 ?같은 이름, ${} 왜 쓰는지 모르겠음
+            "${MediaStore.Images.Media.DISPLAY_NAME} LIKE ?",
             arrayOf("student%"), // ?에 들어갈 내용. student로 시작하는 cf) array로 넣어야 함
             null // 정렬
         )

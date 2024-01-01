@@ -1,7 +1,6 @@
 package com.example.madcampweek1
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -24,8 +23,6 @@ class ProfileAdapter(private var dataSet : ArrayList<ProfileDTO>) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         binding = ProfileItemsBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         return ViewHolder(binding)
-
-
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {

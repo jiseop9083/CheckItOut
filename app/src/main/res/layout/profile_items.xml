@@ -10,7 +10,7 @@
     android:layout_marginRight="20dp"
     android:layout_marginTop="20dp"
     android:background="@drawable/profile_card"
-    android:elevation="10dp"
+    android:elevation="5dp"
     android:id="@+id/profile"
     android:orientation="vertical">
 
@@ -20,13 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
 
             android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
             android:src="@drawable/picture2"
-            android:background="@drawable/circle"
+            app:shapeAppearanceOverlay="@style/RoundedImageView"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

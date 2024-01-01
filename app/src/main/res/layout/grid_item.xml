@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/personCard"
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:padding="10dp"
     android:layout_margin="10dp"
+    android:elevation="4dp"
     android:gravity="center"
     android:background="@drawable/profile_card"
     >
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/grid_image"
         android:background="@drawable/round_image"
         android:layout_width="130dp"
         android:layout_height="130dp"
         android:scaleType="centerCrop"
+        android:clickable="true"
+
+        app:shapeAppearanceOverlay="@style/RoundedImageView"
         />
 
 
@@ -27,16 +32,18 @@
 
         <TextView
             android:id="@+id/item_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Rose"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/attend_btn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/attend_btn"
             android:layout_width="46dp"
             android:layout_height="20dp"
             android:background="@drawable/attend_btn"
