@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
@@ -71,10 +72,10 @@ class GridAdapter(private val context: Context, private val names: List<String>,
 
         }
 
+
         holder.button.setOnClickListener {
             changeAttendState(holder, context)
         }
-
 
         return view
     }
