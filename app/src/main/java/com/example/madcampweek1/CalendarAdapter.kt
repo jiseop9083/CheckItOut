@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -56,6 +58,11 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             }
         }
     }
+
+    /*
+        val calendarDialog = CalendarDialogFragment.newInstance()
+        calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+     */
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarItemHolder {
         val view =

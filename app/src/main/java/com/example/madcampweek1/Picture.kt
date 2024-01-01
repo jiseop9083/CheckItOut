@@ -28,6 +28,8 @@ import android.database.Cursor
 import android.util.Log
 import java.util.ArrayList
 
+import androidx.fragment.app.FragmentManager
+
 class Picture : Fragment() {
     private lateinit var binding: FragmentPictureBinding
 
@@ -106,7 +108,9 @@ class Picture : Fragment() {
             // 이미지를 표시하는 GridView에 Adapter 설정
             gridAdapter = GridAdapter(requireActivity(), names, images)
             binding.gridView.adapter = gridAdapter
+
         }
+
     }
 
 
