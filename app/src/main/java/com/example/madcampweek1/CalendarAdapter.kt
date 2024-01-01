@@ -47,19 +47,21 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
         holder?.bind(dataList[position], position, context)
         holder.itemView.setOnClickListener {
-            // implement
+            // TODO: call dialog_create_fuction
         }
         holder?.itemCalendarDateText?.setOnClickListener {
-            // implement
+            // TODO: call dialog_create_fuction
         }
 
         holder?.itemCalendarAbsenceBtn?.setOnClickListener {
-            // implement
+            // TODO: call dialog_create_fuction
         }
         holder?.itemCalendarAttendBtn?.setOnClickListener {
-            // implement
+            // TODO: call dialog_create_fuction
         }
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarItemHolder {
         // 일반적으로 false로 설정해 자식 view를 동적으로 첨부함
