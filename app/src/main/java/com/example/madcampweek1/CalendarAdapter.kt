@@ -50,18 +50,67 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         holder?.bind(dataList[position], position, context)
         holder.itemView.setOnClickListener {
             // TODO: call dialog_create_fuction
+            val yearMonthString: String = SimpleDateFormat("yyyyMM",
+                Locale.KOREA
+            ).format(date.time)
+            var dateString: String = holder.itemCalendarDateText.text.toString()
+            val inputNumber = dateString.toInt()
+            val dayString = if (inputNumber < 10) {
+                "0$inputNumber"
+            } else {
+                dateString
+            }
+            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
+            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
         }
         holder?.itemCalendarDateText?.setOnClickListener {
             // TODO: call dialog_create_fuction
+            val yearMonthString: String = SimpleDateFormat("yyyyMM",
+                Locale.KOREA
+            ).format(date.time)
+            var dateString: String = holder.itemCalendarDateText.text.toString()
+            val inputNumber = dateString.toInt()
+            val dayString = if (inputNumber < 10) {
+                "0$inputNumber"
+            } else {
+                dateString
+            }
+            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
+            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
         }
 
         holder?.itemCalendarAbsenceBtn?.setOnClickListener {
             // TODO: call dialog_create_fuction
+            val yearMonthString: String = SimpleDateFormat("yyyyMM",
+                Locale.KOREA
+            ).format(date.time)
+            var dateString: String = holder.itemCalendarDateText.text.toString()
+            val inputNumber = dateString.toInt()
+            val dayString = if (inputNumber < 10) {
+                "0$inputNumber"
+            } else {
+                dateString
+            }
+            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
+            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
         }
         holder?.itemCalendarAttendBtn?.setOnClickListener {
             // TODO: call dialog_create_fuction
+            val yearMonthString: String = SimpleDateFormat("yyyyMM",
+                Locale.KOREA
+            ).format(date.time)
+            var dateString: String = holder.itemCalendarDateText.text.toString()
+            val inputNumber = dateString.toInt()
+            val dayString = if (inputNumber < 10) {
+                "0$inputNumber"
+            } else {
+                dateString
+            }
+            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
+            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
         }
     }
+
 
 
     /*
@@ -86,7 +135,6 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         var itemCalendarAbsenceBtn: Button = itemView!!.findViewById(R.id.absence_btn)
 
 
-
         fun bind(data: Int, position: Int, context: Context) {
             val firstDateIndex = furangCalendar.prevTail
             val lastDateIndex = dataList.size - furangCalendar.nextHead - 1
@@ -102,7 +150,7 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
                 Locale.KOREA
             ).format(date.time)
 
-            val date = java.util.Calendar.getInstance().run {
+            val realDate = java.util.Calendar.getInstance().run {
                 add(java.util.Calendar.MONTH, 0)
                 time
             }
@@ -110,7 +158,7 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             var realdatetime: String = SimpleDateFormat(
                 "yyyy년MM월",
                 Locale.KOREA
-            ).format(date.time)
+            ).format(realDate.time)
 
             if (dataList[position] == dateInt && datetime == realdatetime) {
                 itemCalendarDateText.setTypeface(itemCalendarDateText.typeface, Typeface.BOLD)
@@ -120,6 +168,12 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
                 itemCalendarDateText.setTextAppearance(R.style.LightColorDateTextStyle)
                 itemCalendarAttendBtn.visibility = View.GONE
                 itemCalendarAbsenceBtn.visibility = View.GONE
+
+                itemView.isEnabled = false
+                itemCalendarDateText.isEnabled = false
+//                itemCalendarAttendBtn.isEnabled = false
+//                itemCalendarAbsenceBtn.isEnabled = false
+
             }
         }
     }
