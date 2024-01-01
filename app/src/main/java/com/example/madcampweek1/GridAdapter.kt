@@ -36,7 +36,7 @@ class GridAdapter(private val context: Context, private val names: List<String>,
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         // convertView: 이전에 생성된 뷰 재활용, parent: 부모 뷰 그룹 (이 뷰를 포함하는, layout..)
         val view: View
-        val holder: ViewHolder
+        val holder: PersonCardViewHolder
 
         if (convertView == null) { // null이면 새 뷰 생성하고 holder에 연결
             
@@ -45,11 +45,11 @@ class GridAdapter(private val context: Context, private val names: List<String>,
             //binding = GridItemBinding.inflate(LayoutInflater.from(parent!!.context), parent, false)
             view = inflater.inflate(R.layout.grid_item, parent, false)
 
-            holder = ViewHolder(view)
+            holder = PersonCardViewHolder(view)
             view.tag = holder
         } else { // 존재하면 convertView 재사용, holder 가져옴
             view = convertView
-            holder = view.tag as ViewHolder // 재활용할 때 해당 뷰에 연결된 viewholder 가져옴. as: 타입 변환
+            holder = view.tag as PersonCardViewHolder // 재활용할 때 해당 뷰에 연결된 viewholder 가져옴. as: 타입 변환
         }
 
 
@@ -61,28 +61,41 @@ class GridAdapter(private val context: Context, private val names: List<String>,
         holder.textView.text = names[position]
         val attendBtn = context.resources.getDrawable(R.drawable.attend_btn, null)
         val absenceBtn = context.resources.getDrawable(R.drawable.absence_btn, null)
+
         holder.imageView.setOnClickListener {
-            Toast.makeText(context, "You Clicked on ${names[position]}", Toast.LENGTH_LONG).show()
+            changeAttendState(holder, context)
 
-            // TODO: move it to calendar
-            val calendarDialog = CalendarDialogFragment.newInstance()
-            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+        }
+
+        holder.textView.setOnClickListener {
+            changeAttendState(holder, context)
+
+        }
 
 
-            if(holder.button.text == "출석"){
-                holder.button.text = "결석"
-                holder.button.background = absenceBtn
-            } else{
-                holder.button.text = "출석"
-                holder.button.background = attendBtn
-            }
-
+        holder.button.setOnClickListener {
+            changeAttendState(holder, context)
         }
 
         return view
     }
 
-    private class ViewHolder(view: View) {
+    fun changeAttendState(holder : PersonCardViewHolder, context: Context){
+        val attendBtn = context.resources.getDrawable(R.drawable.attend_btn, null)
+        val absenceBtn = context.resources.getDrawable(R.drawable.absence_btn, null)
+        if(holder.button.text == "출석"){
+            holder.button.text = "결석"
+            holder.button.background = absenceBtn
+            holder.imageView.imageAlpha = 104
+        } else{
+            holder.button.text = "출석"
+            holder.button.background = attendBtn
+            holder.imageView.imageAlpha = 255
+        }
+        Toast.makeText(context, "${holder.textView.text}님이 ${holder.button.text}처리 되었습니다", Toast.LENGTH_SHORT).show()
+    }
+
+    class PersonCardViewHolder(view: View) {
         val imageView: ImageView = view.findViewById(R.id.grid_image)
         val textView: TextView = view.findViewById(R.id.item_name)
         val button: Button = view.findViewById(R.id.attend_btn)

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <androidx.constraintlayout.widget.ConstraintLayout
-
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -16,44 +15,47 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-    <TextView
-        android:id="@+id/item_calendar_date_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1"
-        android:textSize="18sp"
-        android:gravity="center_horizontal|top"
-        style="@style/DateTextStyle"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        <TextView
+            android:id="@+id/item_calendar_date_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textSize="18sp"
+            android:gravity="center_horizontal|top"
+            style="@style/DateTextStyle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            />
 
-    <Button
-        android:id="@+id/attend_btn"
-        android:layout_width="22dp"
-        android:layout_height="12dp"
-        android:background="@drawable/attend_btn"
-        android:textColor="@color/white"
-        android:text="1"
-        android:textSize="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/absence_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_calendar_date_text" />
+        <Button
+            android:id="@+id/attend_btn"
+            android:layout_width="22dp"
+            android:layout_height="12dp"
+            android:background="@drawable/attend_btn"
+            android:textColor="@color/white"
+            android:text="1"
+            android:textSize="8dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toTopOf="@+id/absence_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/item_calendar_date_text" />
 
-    <Button
-        android:id="@+id/absence_btn"
-        android:layout_width="22dp"
-        android:layout_height="12dp"
-        android:layout_marginTop="2dp"
-        android:background="@drawable/absence_btn"
-        android:textColor="@color/white"
-        android:text="1"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/attend_btn" />
+        <Button
+            android:id="@+id/absence_btn"
+            android:layout_width="22dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/absence_btn"
+            android:textColor="@color/white"
+            android:text="1"
+            android:textSize="10dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/attend_btn" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
