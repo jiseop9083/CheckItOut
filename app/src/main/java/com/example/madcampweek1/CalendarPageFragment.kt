@@ -21,12 +21,10 @@ import java.util.Locale
 
 class CalendarPageFragment(index: Int) : Fragment() {
 
-    private val TAG = javaClass.simpleName
     lateinit var mContext: Context
     lateinit var mActivity: MainActivity
 
     var pageIndex = index
-    lateinit var currentDate: Date
 
     lateinit var calendar_year_month_text: TextView
     lateinit var calendar_layout: LinearLayout
@@ -84,18 +82,20 @@ class CalendarPageFragment(index: Int) : Fragment() {
         }
 
         // TODO: code refacting : tab3 fragment이름 바꾸기(java의 Calender랑 겹침
-        val date = java.util.Calendar.getInstance().run {
+        var currentDate : Date = java.util.Calendar.getInstance().run {
+            add(java.util.Calendar.MONTH, 0)
+            time
+        }
+        // 포맷 적용
+        var selectedDate : Date = java.util.Calendar.getInstance().run {
             add(java.util.Calendar.MONTH, pageIndex)
             time
         }
-        currentDate = date
-        // 포맷 적용
-        var datetime: String = SimpleDateFormat(
-            mContext.getString(R.string.calendar_year_month_format),
+        calendar_year_month_text.setText(SimpleDateFormat(
+            "yyy년MM월",
             Locale.KOREA
-        ).format(date.time)
-        calendar_year_month_text.setText(datetime)
-        calendarAdapter = CalendarAdapter(mContext, calendar_layout, currentDate)
+        ).format(selectedDate.time))
+        calendarAdapter = CalendarAdapter(mContext, calendar_layout, currentDate, selectedDate)
         calendar_view.adapter = calendarAdapter
         calendar_view.layoutManager = GridLayoutManager(mContext, 7, GridLayoutManager.VERTICAL, false)
         calendar_view.setHasFixedSize(true)

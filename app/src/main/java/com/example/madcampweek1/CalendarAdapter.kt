@@ -19,14 +19,13 @@ import java.util.Locale
 
 
 // 높이를 구하는데 필요한 LinearLayout과 FurangCalender를 사용할 때 필요한 date를 받는다.
-class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, val date: Date) :
+class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, val currentDate: Date, val selectedDate: Date) :
     RecyclerView.Adapter<CalendarAdapter.CalendarItemHolder>() {
 
     var dataList: ArrayList<Int> = arrayListOf()
 
-
     // FurangCalendar을 이용하여 날짜 리스트 세팅
-    var furangCalendar: FurangCalendar = FurangCalendar(date)
+    var furangCalendar: FurangCalendar = FurangCalendar(selectedDate)
     init {
         furangCalendar.initBaseCalendar()
         dataList = furangCalendar.dateList
@@ -85,34 +84,24 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         var itemCalendarAttendBtn: Button = itemView!!.findViewById(R.id.attend_btn)
         var itemCalendarAbsenceBtn: Button = itemView!!.findViewById(R.id.absence_btn)
 
-
-
         fun bind(data: Int, position: Int, context: Context) {
             val firstDateIndex = furangCalendar.prevTail
             val lastDateIndex = dataList.size - furangCalendar.nextHead - 1
 
             itemCalendarDateText.setText(data.toString())
 
-            // date 구하기
-            var dateString: String = SimpleDateFormat("dd", Locale.KOREA).format(date)
-            var dateInt = dateString.toInt()
-
-            // TODO: refactoring: remove duplicated code
-            val datetime: String = SimpleDateFormat("yyyy년MM월",
-                Locale.KOREA
-            ).format(date.time)
 
             val date = java.util.Calendar.getInstance().run {
                 add(java.util.Calendar.MONTH, 0)
                 time
             }
             // 포맷 적용
-            var realdatetime: String = SimpleDateFormat(
-                "yyyy년MM월",
+            var currentDay: Int = SimpleDateFormat(
+                "dd",
                 Locale.KOREA
-            ).format(date.time)
+            ).format(date.time).toInt()
 
-            if (dataList[position] == dateInt && datetime == realdatetime) {
+            if (dataList[position] == currentDay && currentDate.time == selectedDate.time) {
                 itemCalendarDateText.setTypeface(itemCalendarDateText.typeface, Typeface.BOLD)
             }
 
@@ -120,6 +109,7 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
                 itemCalendarDateText.setTextAppearance(R.style.LightColorDateTextStyle)
                 itemCalendarAttendBtn.visibility = View.GONE
                 itemCalendarAbsenceBtn.visibility = View.GONE
+
             }
         }
     }
