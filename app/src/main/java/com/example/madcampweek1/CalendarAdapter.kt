@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -30,8 +31,11 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
     }
 
     interface ItemClick {
-        fun onClick(view: View, position: Int)
+        fun onClick(view: View, position: Int) {
+            Log.d("tag", "hello ${view} ${position}")
+        }
     }
+
 
     var itemClick: ItemClick? = null
 
@@ -43,9 +47,12 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
         holder?.bind(dataList[position], position, context)
         if (itemClick != null) {
-            holder?.itemView?.setOnClickListener { v ->
-                itemClick?.onClick(v, position)
-
+            holder?.itemView?.setOnClickListener {
+                object : View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        Log.d("tag", "hello")
+                    }
+                }
             }
         }
     }
@@ -61,6 +68,9 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
     inner class CalendarItemHolder(itemView: View?) : RecyclerView.ViewHolder(itemView!!) {
 
         private var itemCalendarDateText: TextView = itemView!!.findViewById(R.id.item_calendar_date_text)
+        private var itemCalendarAttendBtn: Button = itemView!!.findViewById(R.id.attend_btn)
+        private var itemCalendarAbsenceBtn: Button = itemView!!.findViewById(R.id.absence_btn)
+
 
 
         fun bind(data: Int, position: Int, context: Context) {
@@ -94,6 +104,8 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
             if (position < firstDateIndex || position > lastDateIndex) {
                 itemCalendarDateText.setTextAppearance(R.style.LightColorDateTextStyle)
+                itemCalendarAttendBtn.visibility = View.GONE
+                itemCalendarAbsenceBtn.visibility = View.GONE
             }
         }
     }

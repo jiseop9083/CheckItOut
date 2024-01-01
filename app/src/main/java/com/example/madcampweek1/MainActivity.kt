@@ -1,7 +1,11 @@
 package com.example.madcampweek1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.Button
+import androidx.activity.result.contract.ActivityResultContracts
 import com.example.madcampweek1.databinding.ActivityMainBinding
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
@@ -50,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 super.onPageScrollStateChanged(state)
             }
         })
+
     }
 
 
