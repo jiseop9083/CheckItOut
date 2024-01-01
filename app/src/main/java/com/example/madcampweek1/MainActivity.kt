@@ -23,8 +23,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val i = binding.tabs.tabCount.toInt()
-        binding.title.text = tabTextList[i]
+        val intent = Intent(this, LoadingActivity::class.java)
+        startActivity(intent)
+
+        val i = binding.tabs.tabCount
+
         binding.viewPagerContainer.adapter = ViewPagerAdapter(this)
         TabLayoutMediator(binding.tabs, binding.viewPagerContainer) { tab, pos ->
             tab.text = tabTextList[pos]
@@ -46,11 +49,13 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 currentPos = position
+                //binding.title.text = tabTextList[currentPos]
                 super.onPageSelected(position)
             }
 
             override fun onPageScrollStateChanged(state: Int) {
                 currentState = state
+
                 super.onPageScrollStateChanged(state)
             }
         })

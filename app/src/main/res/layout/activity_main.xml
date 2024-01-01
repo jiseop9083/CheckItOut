@@ -16,7 +16,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="8dp"
-        android:text="ViewName"
+        android:text="째끼라우"
         android:textAlignment="textStart"
         android:textColor="@color/white"
         android:textSize="25sp"
@@ -31,7 +31,13 @@
         app:layout_constraintTop_toBottomOf="@+id/title"
         />
 
-
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/darkBlue"
+        app:layout_constraintBottom_toTopOf="@+id/tabs"
+        app:layout_constraintTop_toBottomOf="@+id/viewPagerContainer"/>
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabs"
         android:layout_width="match_parent"
@@ -43,8 +49,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
 
-        app:tabIconTint="@color/menu_select"
-        app:tabTextColor="@color/menu_select"
+        app:tabIconTint="@color/selected"
+        app:tabTextColor="@color/selected"
         app:tabIndicatorHeight="0dp"
         app:tabBackground="@color/white"
 

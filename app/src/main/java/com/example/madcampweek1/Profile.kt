@@ -1,5 +1,6 @@
 package com.example.madcampweek1
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,9 +18,23 @@ class Profile : Fragment() {
     private lateinit var profileAdapter: ProfileAdapter
     private lateinit var studentData : ArrayList<ProfileDTO>
 
+    lateinit var mContext: Context
+    lateinit var mActivity: MainActivity
+
+
     fun setStudentData(studentData : ArrayList<ProfileDTO>){
         this.studentData = studentData
     }
+
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) {
+            mContext = context
+            mActivity = activity as MainActivity
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +58,7 @@ class Profile : Fragment() {
                 studentID=studentID.toInt(),
                 phoneNumber=phoneNumber))
         }
-        profileAdapter = ProfileAdapter(dataSet)
+        profileAdapter = ProfileAdapter(mContext, dataSet)
         binding.profileItems.layoutManager = LinearLayoutManager(activity)
         binding.profileItems.adapter = profileAdapter
 
