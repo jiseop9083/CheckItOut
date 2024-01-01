@@ -92,7 +92,7 @@ class CalendarPageFragment(index: Int) : Fragment() {
             time
         }
         calendar_year_month_text.setText(SimpleDateFormat(
-            "yyy년MM월",
+            "yyyy년MM월",
             Locale.KOREA
         ).format(selectedDate.time))
         calendarAdapter = CalendarAdapter(mContext, calendar_layout, currentDate, selectedDate)
