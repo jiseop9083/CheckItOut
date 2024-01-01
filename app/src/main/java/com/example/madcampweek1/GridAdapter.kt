@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 
 import com.bumptech.glide.Glide
@@ -62,6 +63,12 @@ class GridAdapter(private val context: Context, private val names: List<String>,
         val absenceBtn = context.resources.getDrawable(R.drawable.absence_btn, null)
         holder.imageView.setOnClickListener {
             Toast.makeText(context, "You Clicked on ${names[position]}", Toast.LENGTH_LONG).show()
+
+            // TODO: move it to calendar
+            val calendarDialog = CalendarDialogFragment.newInstance()
+            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+
+
             if(holder.button.text == "출석"){
                 holder.button.text = "결석"
                 holder.button.background = absenceBtn
@@ -71,7 +78,6 @@ class GridAdapter(private val context: Context, private val names: List<String>,
             }
 
         }
-
 
         return view
     }
