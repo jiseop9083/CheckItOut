@@ -10,7 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Collections
 
-    class AttendanceAdapter(private val items: List<String>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
+
+class AttendanceAdapter(private val items: List<String>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
 
     data class DialogItem(var type: Int, val data: String)
     val TYPE_ATTEND = 0
@@ -24,9 +25,10 @@ import java.util.Collections
         return if (viewType==TYPE_ATTEND || viewType==TYPE_ABSENT) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.calendar_person_item, parent, false)
             ViewHolder(view)
-            } else {
-                throw IllegalArgumentException("Invalid view type: $viewType")
-            }
+
+        } else {
+            throw IllegalArgumentException("Invalid view type: $viewType")
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

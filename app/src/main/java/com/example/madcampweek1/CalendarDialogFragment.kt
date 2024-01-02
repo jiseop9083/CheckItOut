@@ -25,7 +25,6 @@ class CalendarDialogFragment : DialogFragment() {
     private lateinit var absentAdapter: AttendanceAdapter
 
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
@@ -70,13 +69,14 @@ class CalendarDialogFragment : DialogFragment() {
 
         return view
 
-    }
 
+    }
     private fun setupRecyclerView(recyclerView: RecyclerView, adapter: AttendanceAdapter) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
 //        adapter.recyclerView = recyclerView
     }
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)

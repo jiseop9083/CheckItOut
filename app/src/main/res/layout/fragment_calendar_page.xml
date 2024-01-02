@@ -43,7 +43,7 @@
             android:background="@drawable/arrow_down" />
     </LinearLayout>
     <View
-        android:id="@+id/div"
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/darkBlue" />

@@ -35,7 +35,7 @@ class Calendar : Fragment() {
 
 
         calendarPagerAdapter.apply {
-            calendarViewPager.setCurrentItem(this.fragmentPosition, true)
+            calendarViewPager.setCurrentItem(this.fragmentPosition, false)
         }
     }
 }

@@ -19,14 +19,13 @@ import java.util.Locale
 
 
 // 높이를 구하는데 필요한 LinearLayout과 FurangCalender를 사용할 때 필요한 date를 받는다.
-class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, val date: Date) :
+class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, val currentDate: Date, val selectedDate: Date) :
     RecyclerView.Adapter<CalendarAdapter.CalendarItemHolder>() {
 
     var dataList: ArrayList<Int> = arrayListOf()
 
-
     // FurangCalendar을 이용하여 날짜 리스트 세팅
-    var furangCalendar: FurangCalendar = FurangCalendar(date)
+    var furangCalendar: FurangCalendar = FurangCalendar(selectedDate)
     init {
         furangCalendar.initBaseCalendar()
         dataList = furangCalendar.dateList
@@ -52,7 +51,8 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             // TODO: call dialog_create_fuction
             val yearMonthString: String = SimpleDateFormat("yyyyMM",
                 Locale.KOREA
-            ).format(date.time)
+
+            ).format(selectedDate.time)
             var dateString: String = holder.itemCalendarDateText.text.toString()
             val inputNumber = dateString.toInt()
             val dayString = if (inputNumber < 10) {
@@ -67,7 +67,9 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             // TODO: call dialog_create_fuction
             val yearMonthString: String = SimpleDateFormat("yyyyMM",
                 Locale.KOREA
-            ).format(date.time)
+
+            ).format(selectedDate.time)
+
             var dateString: String = holder.itemCalendarDateText.text.toString()
             val inputNumber = dateString.toInt()
             val dayString = if (inputNumber < 10) {
@@ -83,7 +85,9 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             // TODO: call dialog_create_fuction
             val yearMonthString: String = SimpleDateFormat("yyyyMM",
                 Locale.KOREA
-            ).format(date.time)
+
+            ).format(selectedDate.time)
+
             var dateString: String = holder.itemCalendarDateText.text.toString()
             val inputNumber = dateString.toInt()
             val dayString = if (inputNumber < 10) {
@@ -98,7 +102,8 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             // TODO: call dialog_create_fuction
             val yearMonthString: String = SimpleDateFormat("yyyyMM",
                 Locale.KOREA
-            ).format(date.time)
+
+            ).format(selectedDate.time)
             var dateString: String = holder.itemCalendarDateText.text.toString()
             val inputNumber = dateString.toInt()
             val dayString = if (inputNumber < 10) {
@@ -141,26 +146,19 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
             itemCalendarDateText.setText(data.toString())
 
-            // date 구하기
-            var dateString: String = SimpleDateFormat("dd", Locale.KOREA).format(date)
-            var dateInt = dateString.toInt()
-
-            // TODO: refactoring: remove duplicated code
-            val datetime: String = SimpleDateFormat("yyyy년MM월",
-                Locale.KOREA
-            ).format(date.time)
 
             val realDate = java.util.Calendar.getInstance().run {
                 add(java.util.Calendar.MONTH, 0)
                 time
             }
             // 포맷 적용
-            var realdatetime: String = SimpleDateFormat(
-                "yyyy년MM월",
+            var currentDay: Int = SimpleDateFormat(
+                "dd",
                 Locale.KOREA
-            ).format(realDate.time)
 
-            if (dataList[position] == dateInt && datetime == realdatetime) {
+            ).format(date.time).toInt()
+
+            if (dataList[position] == currentDay && currentDate.time == selectedDate.time) {
                 itemCalendarDateText.setTypeface(itemCalendarDateText.typeface, Typeface.BOLD)
             }
 
@@ -171,8 +169,6 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
                 itemView.isEnabled = false
                 itemCalendarDateText.isEnabled = false
-//                itemCalendarAttendBtn.isEnabled = false
-//                itemCalendarAbsenceBtn.isEnabled = false
 
             }
         }

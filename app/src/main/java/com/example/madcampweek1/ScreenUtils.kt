@@ -17,7 +17,6 @@ object ScreenUtils {
         val display = windowManager.defaultDisplay
 
         display?.getRealSize(screenSize)
-
         return screenSize
 
     } // x: width, y: height
