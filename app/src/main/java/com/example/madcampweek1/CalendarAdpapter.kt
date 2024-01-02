@@ -147,7 +147,7 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             itemCalendarDateText.setText(data.toString())
 
 
-            val realDate = java.util.Calendar.getInstance().run {
+            val date = java.util.Calendar.getInstance().run {
                 add(java.util.Calendar.MONTH, 0)
                 time
             }
