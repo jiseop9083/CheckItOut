@@ -13,6 +13,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import java.lang.NumberFormatException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -102,7 +103,6 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
             // TODO: call dialog_create_fuction
             val yearMonthString: String = SimpleDateFormat("yyyyMM",
                 Locale.KOREA
-
             ).format(selectedDate.time)
             var dateString: String = holder.itemCalendarDateText.text.toString()
             val inputNumber = dateString.toInt()
@@ -146,7 +146,6 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
             itemCalendarDateText.setText(data.toString())
 
-
             val date = java.util.Calendar.getInstance().run {
                 add(java.util.Calendar.MONTH, 0)
                 time
@@ -164,13 +163,38 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
             if (position < firstDateIndex || position > lastDateIndex) {
                 itemCalendarDateText.setTextAppearance(R.style.LightColorDateTextStyle)
-                itemCalendarAttendBtn.visibility = View.GONE
-                itemCalendarAbsenceBtn.visibility = View.GONE
+                itemCalendarAttendBtn.visibility = View.INVISIBLE
+                itemCalendarAbsenceBtn.visibility = View.INVISIBLE
 
                 itemView.isEnabled = false
                 itemCalendarDateText.isEnabled = false
 
             }
+
+            // TODO: 데이터 가져오기.
+            var temp1 = 2
+            var temp2 = 3
+            itemCalendarAttendBtn.text = temp1.toString()
+            itemCalendarAbsenceBtn.text = temp2.toString()
+
+            var classDay = 0
+
+            // 출석, 결석한 사람이 둘 다 0명이면 classDay = 0. => 날짜 검색해서 없으면 classDay = 0으로 하자.
+            classDay = if(itemCalendarAttendBtn.text.toString().toInt() == 0 && itemCalendarAbsenceBtn.text.toString().toInt() ==0) 0 else 1
+
+            // 그냥 확인용으로 하나 추가 -> 토요일, 일요일
+            if (position % 7 ==0 || position %7 == 6){
+                classDay = 0
+            }
+//            if (this.itemCalendarDateText.text.toString().toInt() % 5 == 0) {
+//                classDay = 0
+//            }
+
+            if (classDay == 0){
+                itemCalendarAttendBtn.visibility = View.INVISIBLE
+                itemCalendarAbsenceBtn.visibility = View.INVISIBLE
+            }
         }
+
     }
 }
