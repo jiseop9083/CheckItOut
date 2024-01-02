@@ -99,6 +99,7 @@ class CalendarPageFragment(index: Int) : Fragment() {
         calendar_view.adapter = calendarAdapter
         calendar_view.layoutManager = GridLayoutManager(mContext, 7, GridLayoutManager.VERTICAL, false)
         calendar_view.setHasFixedSize(true)
+
     }
 
 }

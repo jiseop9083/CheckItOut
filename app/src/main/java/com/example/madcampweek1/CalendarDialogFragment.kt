@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
 
@@ -18,10 +19,12 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class CalendarDialogFragment : DialogFragment() {
+
     private lateinit var attendView: RecyclerView
     private lateinit var absentView: RecyclerView
     private lateinit var attendAdapter: AttendanceAdapter
     private lateinit var absentAdapter: AttendanceAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,9 +49,16 @@ class CalendarDialogFragment : DialogFragment() {
         absentView = view.findViewById(R.id.absentRecyclerView)
 
 
-        // 데이터 초기화
-        val data1 = listOf("김민지", "강해린")
-        val data2 = listOf("다니엘", "하니", "혜인")
+        // TODO: 데이터 가져오기
+        val data1 = listOf("김민지", "하니","강해린")
+        val data2 = listOf("다니엘",  "혜인")
+
+        val attendNumView = view.findViewById<TextView>(R.id.attendNumber)
+        val absentNumView = view.findViewById<TextView>(R.id.absentNumber)
+        attendNumView.text = data1.size.toString()
+        absentNumView.text = data2.size.toString()
+
+
 
         // 어댑터 초기화
         attendAdapter = AttendanceAdapter(data1)
@@ -66,6 +76,7 @@ class CalendarDialogFragment : DialogFragment() {
         }
 
         return view
+
 
     }
     private fun setupRecyclerView(recyclerView: RecyclerView, adapter: AttendanceAdapter) {
@@ -113,6 +124,5 @@ class CalendarDialogFragment : DialogFragment() {
             return fragment
         }
     }
-
 
 }

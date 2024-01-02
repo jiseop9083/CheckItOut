@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Collections
 
+
 class AttendanceAdapter(private val items: List<String>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
 
     data class DialogItem(var type: Int, val data: String)
@@ -24,6 +25,7 @@ class AttendanceAdapter(private val items: List<String>) : RecyclerView.Adapter<
         return if (viewType==TYPE_ATTEND || viewType==TYPE_ABSENT) {
             val view = LayoutInflater.from(parent.context).inflate(R.layout.calendar_person_item, parent, false)
             ViewHolder(view)
+
         } else {
             throw IllegalArgumentException("Invalid view type: $viewType")
         }
