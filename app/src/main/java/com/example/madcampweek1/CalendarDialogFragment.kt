@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import android.util.Log
+import android.view.Gravity
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.TextView
@@ -74,6 +75,7 @@ class CalendarDialogFragment : DialogFragment() {
             dismiss() // 다이얼로그 닫기
         }
 
+
         return view
 
 
@@ -105,6 +107,9 @@ class CalendarDialogFragment : DialogFragment() {
         // WindowManager.LayoutParams를 사용하여 상단 마진 추가
         val layoutParams = dialog.window?.attributes
         layoutParams?.y = - (height * 0.02).toInt() // 상단 마진 값 (원하는 값으로 조절)
+
+        // add animation
+        layoutParams?.windowAnimations = R.style.AnimationPopupStyle
 
         dialog.window?.attributes = layoutParams
         dialog.setCancelable(true)
