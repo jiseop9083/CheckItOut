@@ -13,6 +13,62 @@
         android:gravity="end"
         android:orientation="horizontal">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/blue"
+                    android:gravity="center"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="출석"
+                    android:textColor="@color/darkGrey"
+                    android:textSize="12sp"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:gravity="center"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="@color/red"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="결석"
+                    android:textSize="12sp"
+                    android:textColor="@color/darkGrey"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
         <TextView
             android:id="@+id/calendar_year_month_text"
             style="@style/DateTextStyle"

@@ -14,6 +14,10 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
     </style>
+    <style name="AnimationPopupStyle">
+        <item name="android:windowEnterAnimation">@anim/openanim</item>
+        <item name="android:windowExitAnimation">@anim/closeanim</item>
+    </style>
 
 
 </resources>
