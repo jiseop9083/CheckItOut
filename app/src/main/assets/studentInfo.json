@@ -3,19 +3,49 @@
     {
       "studentID" : 12345678,
       "phoneNumber": "010-1234-5678",
-      "name": "jiseop",
+      "name": "강해린",
       "major": "ComputerScience"
     },
     {
-      "studentID" : 2468904,
+      "studentID" : 24681904,
       "phoneNumber": "010-5678-5678",
-      "name": "jiseop2",
+      "name": "김민지",
       "major": "IndustrialDesign"
     },
     {
-      "studentID" : 1235689,
+      "studentID" : 23456178,
       "phoneNumber": "010-1234-5678",
-      "name": "Janu Kim",
+      "name": "이혜인",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12567834,
+      "phoneNumber": "010-5678-1234",
+      "name": "다니엘",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 45612378,
+      "phoneNumber": "010-4561-2378",
+      "name": "하니",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12345786,
+      "phoneNumber": "010-1234-5786",
+      "name": "지젤",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12453678,
+      "phoneNumber": "010-1245-3678",
+      "name": "윈터",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12456899,
+      "phoneNumber": "010-1245-6899",
+      "name": "카리나",
       "major": "ComputerScience"
     }
   ]
