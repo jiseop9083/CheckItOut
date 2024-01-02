@@ -69,7 +69,6 @@ class CalendarDialogFragment : DialogFragment() {
         setupRecyclerView(absentView, absentAdapter)
 
         val closeButton = view.findViewById<ImageButton>(R.id.closeButton)
-        Log.d("DialogFragment", "closeButton: $closeButton")
         closeButton.setOnClickListener {
             // 여기에 'X' 버튼 클릭 시 수행할 동작을 추가
             dismiss() // 다이얼로그 닫기

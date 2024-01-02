@@ -20,6 +20,7 @@ import com.example.madcampweek1.databinding.ProfileItemsBinding
 class ProfileAdapter(val context: Context, private var dataSet : ArrayList<ProfileDTO>) :
     RecyclerView.Adapter<ProfileAdapter.ViewHolder>() {
     private lateinit var binding: ProfileItemsBinding
+    private lateinit var attend : List<Pair<Int, Int>>
 
 
 
@@ -32,15 +33,28 @@ class ProfileAdapter(val context: Context, private var dataSet : ArrayList<Profi
         val messageView : ImageView = binding.messageView
         val callView : ImageView = binding.callView
         val attendanceRate : TextView = binding.attendanceRate
+        val presentNumber : TextView = binding.presentNumber
+        val absentNumber : TextView = binding.absentNumber
+
+
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         binding = ProfileItemsBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
+        val dataManager = DataManager.instance
+        attend = dataManager.getAttedanceStatus()
+        Log.d("ddd", attend.size.toString())
         return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         var profile : ProfileDTO = dataSet[position]
+        viewHolder.presentNumber.text = attend[position].second.toString()
+        viewHolder.absentNumber.text =attend[position].first.toString()
+        val rate : Float = ((attend[position].second.toFloat() ) / ((attend[position].second + attend[position].first).toFloat()) * 100.0f)
+        if(rate == 100.0f) viewHolder.attendanceRate.text = "100%"
+        else viewHolder.attendanceRate.text = String.format("%.1f", rate) + "%"
+
         viewHolder.name.text = profile.name
         viewHolder.phoneNumber.text = profile.phoneNumber
         viewHolder.studentID.text = profile.studentID.toString()

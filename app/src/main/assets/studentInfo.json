@@ -2,7 +2,7 @@
   "studentList": [
     {
       "studentID" : 12345678,
-      "phoneNumber": "010-1234-5678",
+      "phoneNumber": "010-1234-0001",
       "name": "jiseop",
       "major": "ComputerScience"
     },
@@ -16,6 +16,95 @@
       "studentID" : 1235689,
       "phoneNumber": "010-1234-5678",
       "name": "Janu Kim",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },
+    {
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
+      "major": "ComputerScience"
+    },{
+      "studentID" : 12345678,
+      "phoneNumber": "010-1234-0001",
+      "name": "jiseop",
       "major": "ComputerScience"
     }
   ]

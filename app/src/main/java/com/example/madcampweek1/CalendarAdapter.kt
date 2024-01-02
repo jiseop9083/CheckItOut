@@ -10,10 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import java.lang.NumberFormatException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -24,35 +22,66 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
     RecyclerView.Adapter<CalendarAdapter.CalendarItemHolder>() {
 
     var dataList: ArrayList<Int> = arrayListOf()
+    var attendanceList: ArrayList<Triple<Int, Int, Int>> = arrayListOf()
+    var attendanceCounter : Int = 0
+    var isCurrentMonth : Boolean = false
+
 
     // FurangCalendar을 이용하여 날짜 리스트 세팅
     var furangCalendar: FurangCalendar = FurangCalendar(selectedDate)
     init {
         furangCalendar.initBaseCalendar()
         dataList = furangCalendar.dateList
+        attendanceCounter = 0
+        isCurrentMonth = false
+        initAttendanceList()
     }
 
-    interface ItemClick {
-        fun onClick(view: View, position: Int) {
-            Log.d("tag", "hello ${view} ${position}")
+
+
+    fun initAttendanceList() {
+        val dataManager = DataManager.instance
+        val monthAttendanceList = dataManager.getMonthAttendanceList()
+        val calendar = java.util.Calendar.getInstance()
+        calendar.time = selectedDate
+        attendanceList.clear()
+        val currentYear = calendar.get(java.util.Calendar.YEAR)
+        val currentMonth = calendar.get(java.util.Calendar.MONTH) + 1
+        var datePointer : Int = 0
+        while (datePointer < monthAttendanceList.size){
+            val date = monthAttendanceList[datePointer].first.split("-")
+            val year = date[0].toInt()
+            val month = date[1].toInt()
+            val day = date[2].toInt()
+            if(currentYear <= year && currentMonth < month){
+                break
+            }
+
+            if(currentYear == year && currentMonth == month){
+                attendanceList.add(Triple(day, monthAttendanceList[datePointer].second, monthAttendanceList[datePointer].third))
+            }
+            datePointer++
         }
     }
-
-
-    var itemClick: ItemClick? = null
 
     override fun onBindViewHolder(holder: CalendarItemHolder, position: Int) {
 
         // list_item_calendar 높이 지정
         val h = calendarLayout.height / 6
         holder.itemView.layoutParams.height = h
-
-        holder?.bind(dataList[position], position, context)
+        var attendanceNum : Pair<Int, Int> = Pair(-1, -1) // exception value
+        //val t : Int = attendanceList[attendanceCounter].first
+        if(dataList[position] == 1)
+            isCurrentMonth = true
+        if(isCurrentMonth && attendanceCounter < attendanceList.size  && attendanceList[attendanceCounter].first == dataList[position]){
+            attendanceNum = Pair(attendanceList[attendanceCounter].second, attendanceList[attendanceCounter].third)
+            attendanceCounter++
+        }
+        holder?.bind(dataList[position], position, context, attendanceNum)
         holder.itemView.setOnClickListener {
             // TODO: call dialog_create_fuction
             val yearMonthString: String = SimpleDateFormat("yyyyMM",
                 Locale.KOREA
-
             ).format(selectedDate.time)
             var dateString: String = holder.itemCalendarDateText.text.toString()
             val inputNumber = dateString.toInt()
@@ -140,12 +169,11 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         var itemCalendarAbsenceBtn: Button = itemView!!.findViewById(R.id.absence_btn)
 
 
-        fun bind(data: Int, position: Int, context: Context) {
+        fun bind(data: Int, position: Int, context: Context, attendance: Pair<Int, Int>) {
             val firstDateIndex = furangCalendar.prevTail
             val lastDateIndex = dataList.size - furangCalendar.nextHead - 1
 
             itemCalendarDateText.setText(data.toString())
-
             val date = java.util.Calendar.getInstance().run {
                 add(java.util.Calendar.MONTH, 0)
                 time
@@ -171,24 +199,14 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
 
             }
 
-            // TODO: 데이터 가져오기.
-            var temp1 = 2
-            var temp2 = 3
-            itemCalendarAttendBtn.text = temp1.toString()
-            itemCalendarAbsenceBtn.text = temp2.toString()
+
+            itemCalendarAttendBtn.text = attendance.first.toString()
+            itemCalendarAbsenceBtn.text = attendance.second.toString()
 
             var classDay = 0
 
             // 출석, 결석한 사람이 둘 다 0명이면 classDay = 0. => 날짜 검색해서 없으면 classDay = 0으로 하자.
-            classDay = if(itemCalendarAttendBtn.text.toString().toInt() == 0 && itemCalendarAbsenceBtn.text.toString().toInt() ==0) 0 else 1
-
-            // 그냥 확인용으로 하나 추가 -> 토요일, 일요일
-            if (position % 7 ==0 || position %7 == 6){
-                classDay = 0
-            }
-//            if (this.itemCalendarDateText.text.toString().toInt() % 5 == 0) {
-//                classDay = 0
-//            }
+            classDay = if(itemCalendarAttendBtn.text.toString().toInt() == -1 || itemCalendarAbsenceBtn.text.toString().toInt() == -1) 0 else 1
 
             if (classDay == 0){
                 itemCalendarAttendBtn.visibility = View.INVISIBLE
