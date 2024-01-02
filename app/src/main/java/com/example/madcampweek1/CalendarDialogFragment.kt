@@ -12,7 +12,7 @@ import android.util.Log
 
 
 
-    class CalendarDialogFragment : DialogFragment() {
+class CalendarDialogFragment : DialogFragment() {
 
 
     override fun onCreateView(
