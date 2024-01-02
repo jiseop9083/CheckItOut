@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
 
-    private val tabTextList = listOf("Profile", "Picture", "Calendar")
+    private val tabTextList = listOf("프로필", "출석 체크", "월별 출석 현황")
+    private val subjectList = listOf("전산기조직", "프로그래밍의이해", "몰입캠프: 프로그래밍과 스타트업")
     private val tabIconList = listOf(R.drawable.profile, R.drawable.check, R.drawable.calendar)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +50,8 @@ class MainActivity : AppCompatActivity() {
 
             override fun onPageSelected(position: Int) {
                 currentPos = position
-                //binding.title.text = tabTextList[currentPos]
+                //binding.subjectText.text =subjectList[currentPos]
+                binding.titleText.text = tabTextList[currentPos]
                 super.onPageSelected(position)
             }
 
@@ -61,6 +63,5 @@ class MainActivity : AppCompatActivity() {
         })
 
     }
-
 
 }

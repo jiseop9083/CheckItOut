@@ -17,7 +17,9 @@ import android.provider.MediaStore
 import androidx.core.app.ActivityCompat.startActivityForResult
 
 import android.Manifest
+import android.app.DatePickerDialog
 import android.content.ContentUris
+import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -29,6 +31,8 @@ import android.util.Log
 import java.util.ArrayList
 
 import androidx.fragment.app.FragmentManager
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class Picture : Fragment() {
     private lateinit var binding: FragmentPictureBinding
@@ -36,15 +40,42 @@ class Picture : Fragment() {
     private val names = ArrayList<String>()
     private val images = ArrayList<String>()
     private lateinit var gridAdapter: GridAdapter
+    lateinit var mContext: Context
+    lateinit var mActivity: MainActivity
 
     // 갤러리에서 이미지를 선택할 때 사용할 상수
     private val GALLERY_PERMISSION_REQUEST = 123
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) {
+            mContext = context
+            mActivity = activity as MainActivity
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPictureBinding.inflate(inflater, container, false)
+        val activity = activity as MainActivity?
+        val c = java.util.Calendar.getInstance()
+        binding.selectedDateText.text = SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(c.time)
+        binding.dateSelectBtn.setOnClickListener{
+            val year = c[java.util.Calendar.YEAR]
+            val month = c[java.util.Calendar.MONTH]
+            val day = c[java.util.Calendar.DAY_OF_MONTH]
+            // DatePickerDialog 생성
+            val datePickerDialog = DatePickerDialog(mContext, { _, selectedYear, selectedMonth, selectedDay ->
+                val selectedDate = java.util.Calendar.getInstance()
+                selectedDate.set(selectedYear, selectedMonth, selectedDay)
+                binding.selectedDateText.text = SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(selectedDate.time)
+            }, year, month, day)
+            datePickerDialog.datePicker.maxDate = System.currentTimeMillis()
+
+            datePickerDialog.show()
+        }
 
         if (checkGalleryPermission()) {
             loadImages()
