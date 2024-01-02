@@ -16,9 +16,9 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
-    private val tabTextList = listOf("프로필", "출석 체크", "월별 출석 현황")
-    private val subjectList = listOf("전산기조직", "프로그래밍의이해", "몰입캠프: 프로그래밍과 스타트업")
+    val dataManager = DataManager.instance
+    private val tabTextList = dataManager.getTabTextList()
+    private val subjectList = dataManager.getSubjectList()
     private val tabIconList = listOf(R.drawable.profile, R.drawable.check, R.drawable.calendar)
 
     override fun onCreate(savedInstanceState: Bundle?) {

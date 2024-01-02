@@ -33,6 +33,16 @@ class GridAdapter(private val context: Context, private val names: List<String>,
         return position.toLong()
     }
 
+    override fun getViewTypeCount(): Int {
+        if (count == 0)
+            return 1
+        return count
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         // convertView: 이전에 생성된 뷰 재활용, parent: 부모 뷰 그룹 (이 뷰를 포함하는, layout..)
         val view: View
