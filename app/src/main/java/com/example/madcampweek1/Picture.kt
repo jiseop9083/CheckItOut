@@ -62,6 +62,9 @@ class Picture : Fragment() {
         val activity = activity as MainActivity?
         val c = java.util.Calendar.getInstance()
         binding.selectedDateText.text = SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(c.time)
+        binding.saveBtn.setOnClickListener {
+            Toast.makeText(context, "저장되었습니다", Toast.LENGTH_SHORT).show()
+        }
         binding.dateSelectBtn.setOnClickListener{
             val year = c[java.util.Calendar.YEAR]
             val month = c[java.util.Calendar.MONTH]
