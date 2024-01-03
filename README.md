@@ -1,3 +1,4 @@
 # 째끼라우
 
-<a href="링크"><img src="https://img.shields.io/badge?style=fl/#000000at-square&logo=Kotlin&logoColor=#7F52FF"/></a>
+<img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Python&logoColor=white">
+<img src="https://img.shields.io/badge/Android-34A853?style=for-the-badge&logo=Android&logoColor=white">
