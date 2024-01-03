@@ -67,7 +67,7 @@ class Picture : Fragment() {
             val month = c[java.util.Calendar.MONTH]
             val day = c[java.util.Calendar.DAY_OF_MONTH]
             // DatePickerDialog 생성
-            val datePickerDialog = DatePickerDialog(mContext, { _, selectedYear, selectedMonth, selectedDay ->
+            val datePickerDialog = DatePickerDialog(mContext, R.style.DatePickerTheme, { _, selectedYear, selectedMonth, selectedDay ->
                 val selectedDate = java.util.Calendar.getInstance()
                 selectedDate.set(selectedYear, selectedMonth, selectedDay)
                 binding.selectedDateText.text = SimpleDateFormat("yyyy년 MM월 dd일", Locale.getDefault()).format(selectedDate.time)

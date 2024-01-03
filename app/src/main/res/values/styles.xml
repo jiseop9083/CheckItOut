@@ -19,5 +19,14 @@
         <item name="android:windowExitAnimation">@anim/closeanim</item>
     </style>
 
+    <style name="DatePickerTheme" parent="Theme.AppCompat.Light.Dialog">
+        <!-- 날짜 선택 헤더의 색상 변경 -->
+        <item name="colorAccent">@color/lightBlue</item>
+        <!-- 선택된 날짜의 색상 변경 -->
+        <item name="android:calendarTextColor">@color/white</item>
+        <!-- 선택되지 않은 날짜의 색상 변경 -->
+        <item name="android:textColorSecondary">@color/black</item>
+    </style>
+
 
 </resources>

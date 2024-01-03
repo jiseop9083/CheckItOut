@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.Collections
 
 
-class AttendanceAdapter(private val items: List<String>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
+class AttendanceAdapter(private val items: ArrayList<String>) : RecyclerView.Adapter<AttendanceAdapter.ViewHolder>() {
 
     data class DialogItem(var type: Int, val data: String)
     val TYPE_ATTEND = 0
