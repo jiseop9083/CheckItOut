@@ -51,65 +51,67 @@
     {
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "고윤정",
+
+
       "major": "ComputerScience"
     },
     {
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "닝닝",
       "major": "ComputerScience"
     },
     {
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "성찬",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "소희",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "엔톤",
       "major": "ComputerScience"
     },
     {
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "원빈",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "은석",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "신지섭",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "이원재",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "넙죽이",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "백예린",
       "major": "ComputerScience"
     },{
       "studentID" : 12345678,
       "phoneNumber": "010-1234-0001",
-      "name": "jiseop",
+      "name": "유다빈",
       "major": "ComputerScience"
     }
   ]

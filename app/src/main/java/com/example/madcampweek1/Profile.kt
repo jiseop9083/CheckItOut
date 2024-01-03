@@ -45,7 +45,6 @@ class Profile : Fragment() {
 
 
         val json = activity!!.getAssets().open("studentInfo.json").reader().readText()
-       // val data = JSONObject(json).getJSONObject("studentList")
         var jsonArray = JSONObject(json).getJSONArray("studentList")
 
         val dataSet: ArrayList<ProfileDTO> = ArrayList()
