@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/subject1"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:title="몰입캠프: 프로그래밍과 스타트업"
+            />
+        <item
+            android:id="@+id/subject2"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:title="전산기조직"
+            />
+        <item
+            android:id="@+id/subject3"
+            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+            android:title="프로그래밍의이해"
+            />
+    </group>
+</menu>
