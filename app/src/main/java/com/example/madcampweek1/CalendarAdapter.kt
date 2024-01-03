@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
@@ -79,73 +80,34 @@ class CalendarAdapter(val context: Context, val calendarLayout: LinearLayout, va
         }
         holder?.bind(dataList[position], position, context, attendanceNum)
         holder.itemView.setOnClickListener {
-            // TODO: call dialog_create_fuction
-            val yearMonthString: String = SimpleDateFormat("yyyyMM",
-                Locale.KOREA
-            ).format(selectedDate.time)
-            var dateString: String = holder.itemCalendarDateText.text.toString()
-            val inputNumber = dateString.toInt()
-            val dayString = if (inputNumber < 10) {
-                "0$inputNumber"
-            } else {
-                dateString
-            }
-            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
-            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+            dialog_create_fuction(holder)
         }
         holder?.itemCalendarDateText?.setOnClickListener {
-            // TODO: call dialog_create_fuction
-            val yearMonthString: String = SimpleDateFormat("yyyyMM",
-                Locale.KOREA
-
-            ).format(selectedDate.time)
-
-            var dateString: String = holder.itemCalendarDateText.text.toString()
-            val inputNumber = dateString.toInt()
-            val dayString = if (inputNumber < 10) {
-                "0$inputNumber"
-            } else {
-                dateString
-            }
-            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
-            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+            dialog_create_fuction(holder)
         }
 
         holder?.itemCalendarAbsenceBtn?.setOnClickListener {
-            // TODO: call dialog_create_fuction
-            val yearMonthString: String = SimpleDateFormat("yyyyMM",
-                Locale.KOREA
-
-            ).format(selectedDate.time)
-
-            var dateString: String = holder.itemCalendarDateText.text.toString()
-            val inputNumber = dateString.toInt()
-            val dayString = if (inputNumber < 10) {
-                "0$inputNumber"
-            } else {
-                dateString
-            }
-            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
-            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+            dialog_create_fuction(holder)
         }
         holder?.itemCalendarAttendBtn?.setOnClickListener {
-            // TODO: call dialog_create_fuction
-            val yearMonthString: String = SimpleDateFormat("yyyyMM",
-                Locale.KOREA
-            ).format(selectedDate.time)
-            var dateString: String = holder.itemCalendarDateText.text.toString()
-            val inputNumber = dateString.toInt()
-            val dayString = if (inputNumber < 10) {
-                "0$inputNumber"
-            } else {
-                dateString
-            }
-            val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
-            calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+            dialog_create_fuction(holder)
         }
     }
 
-
+    fun dialog_create_fuction(holder: CalendarItemHolder) {
+        val yearMonthString: String = SimpleDateFormat("yyyyMM",
+            Locale.KOREA
+        ).format(selectedDate.time)
+        var dateString: String = holder.itemCalendarDateText.text.toString()
+        val inputNumber = dateString.toInt()
+        val dayString = if (inputNumber < 10) {
+            "0$inputNumber"
+        } else {
+            dateString
+        }
+        val calendarDialog = CalendarDialogFragment.newInstance(yearMonthString + dayString)
+        calendarDialog.show((context as AppCompatActivity).supportFragmentManager, "calendar_dialog")
+    }
 
     /*
         val calendarDialog = CalendarDialogFragment.newInstance()
