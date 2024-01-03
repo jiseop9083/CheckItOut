@@ -1,6 +1,12 @@
 # 째끼라우
 
-- **팀원** : 김자누, 신지섭
+- 팀원
+  
+  한양대학교 컴퓨터소프트웨어학부 신지섭(sinphi03@gmail.com)
+  
+  카이스트 전산학부 김자누(pistachio@kaist.ac.kr)
+
+
 - **슬로건**: 내 손 안의 출석부
 - **개발 도구**: <img src="https://img.shields.io/badge/Android-34A853?style=for-the-badge&logo=Android&logoColor=white">
 - **사용 언어**: <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=Python&logoColor=white">
@@ -83,3 +89,18 @@ targetSdkVersion 33
 &nbsp;
 
 ## 스크린샷
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/99ae8f35-08a0-4078-829a-3b068e535f95.png" width="200" height="200"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/115ea13b-770e-4f2b-a30e-edd9d0190f72.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/eb8d5a39-89a7-4422-96b1-977c99b30f70.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/1d50d0ee-4427-46d4-9e7e-b5d686c7c5a8.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/8dec21cc-32ed-4834-8605-40e431f9ec0f.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/f58bf5cd-aecf-415e-928f-4539195dd031.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/d324166a-6213-4290-bc2c-ba914abaa9d5.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/aa8e8648-3b63-4794-86f2-5a23d0137cd4.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/2b5e21ef-53e8-4f6d-81cc-98f8ab7c1341.png" width="180" height="320"/>
+<img src="https://github.com/jiseop9083/madcampWeek1/assets/90448022/9331bc3b-6131-4f05-9405-20a965cd5e0a.png" width="180" height="320"/>
+
+
+
+
+
