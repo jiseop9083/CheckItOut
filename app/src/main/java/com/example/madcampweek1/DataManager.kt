@@ -1,6 +1,5 @@
 package com.example.madcampweek1
 
-
 // mocking dateset class
 class DataManager private constructor(){
     companion object {
@@ -13,22 +12,19 @@ class DataManager private constructor(){
     private val tabTextList = listOf("프로필", "출석 체크", "월별 출석 현황")
     private val subjectList = listOf("몰입캠프: 프로그래밍과 스타트업", "전산기조직", "프로그래밍의이해")
     private val monthAttendanceList = listOf<Triple<String, Int, Int>>( // increasing order
-        Triple("2023-12-01", 10, 1),
-        Triple("2023-12-29", 11, 10),
-        Triple("2024-01-02", 12, 2),
-        Triple("2024-01-05", 10, 6),
-        Triple("2024-01-07", 9, 9),
-        Triple("2024-01-10", 10, 123),
-        Triple("2024-01-11", 10, 6),
-        Triple("2024-01-12", 10, 6),
-        Triple("2024-01-13", 15, 2),
-        Triple("2024-01-14", 14, 8),
-        Triple("2024-01-15", 100, 0),
-        Triple("2024-01-16", 1, 6),
-        Triple("2024-01-20", 0, 0),
-        Triple("2024-01-25", 2, 1),
-        Triple("2024-02-05", 999, 999),
-        Triple("2024-02-15", 100, 6),
+        Triple("2023-12-26", 20, 0),
+        Triple("2023-12-28", 17, 3),
+        Triple("2024-01-02", 15, 5),
+        Triple("2024-01-04", 20, 0),
+        Triple("2024-01-09", 0, 20),
+        Triple("2024-01-11", 0, 20),
+        Triple("2024-01-16", 15, 5),
+        Triple("2024-01-18", 16, 4),
+        Triple("2024-01-23", 20, 0),
+        Triple("2024-01-24", 20, 0),
+        Triple("2024-01-25", 0, 20),
+        Triple("2024-01-30", 17, 3),
+        Triple("2024-02-01", 14, 6)
         )
     private val attedanceStatus = listOf<Pair<Int, Int>>(
         Pair(12, 15),
@@ -52,6 +48,7 @@ class DataManager private constructor(){
         Pair(12, 15),
         Pair(12, 15)
     )
+
 
     //val myProfile =
     fun getAbsentStudentList() : List<String>{ // using at CalendarDialogFragment

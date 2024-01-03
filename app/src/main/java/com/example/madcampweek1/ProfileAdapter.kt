@@ -2,12 +2,9 @@ package com.example.madcampweek1
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
+
 
 import android.net.Uri
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -43,7 +40,6 @@ class ProfileAdapter(val context: Context, private var dataSet : ArrayList<Profi
         binding = ProfileItemsBinding.inflate(LayoutInflater.from(viewGroup.context), viewGroup, false)
         val dataManager = DataManager.instance
         attend = dataManager.getAttedanceStatus()
-        Log.d("ddd", attend.size.toString())
         return ViewHolder(binding)
     }
 

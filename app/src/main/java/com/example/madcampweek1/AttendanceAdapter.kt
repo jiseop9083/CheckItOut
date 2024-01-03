@@ -39,4 +39,6 @@ class AttendanceAdapter(private val items: List<String>) : RecyclerView.Adapter<
         return items.size
     }
 
+
+
 }

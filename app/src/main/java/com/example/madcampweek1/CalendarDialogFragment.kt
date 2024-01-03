@@ -1,6 +1,7 @@
 package com.example.madcampweek1
 
 import android.app.Dialog
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +18,7 @@ import java.time.format.DateTimeFormatter
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import org.json.JSONObject
 
 
 class CalendarDialogFragment : DialogFragment() {
@@ -25,7 +27,17 @@ class CalendarDialogFragment : DialogFragment() {
     private lateinit var absentView: RecyclerView
     private lateinit var attendAdapter: AttendanceAdapter
     private lateinit var absentAdapter: AttendanceAdapter
+    lateinit var mContext: Context
+    lateinit var mActivity: MainActivity
 
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is MainActivity) {
+            mContext = context
+            mActivity = activity as MainActivity
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,11 +48,34 @@ class CalendarDialogFragment : DialogFragment() {
 
         // 전달된 데이터 확인
         val argDate = arguments?.getString("date")
-
+        mActivity
         // For dialog title
         val formatterInput = DateTimeFormatter.ofPattern("yyyyMMdd")
         val formatterOutput = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 출석부")
         val date = LocalDate.parse(argDate, formatterInput)
+
+        val json = mActivity!!.getAssets().open("attendanceInfo.json").reader().readText()
+        var jsonArray = JSONObject(json).getJSONArray("attendanceList")
+
+        var absentArray : ArrayList<String> = ArrayList<String>()
+        var presentArray : ArrayList<String> = ArrayList<String>()
+        Log.d("ddd", jsonArray.length().toString())
+        for (i in 0 until jsonArray.length()) {
+            val date = jsonArray.getJSONObject(i).getString("date")
+            if (date == argDate) {
+                Log.d("ddd", date.toString())
+                var presentJsonArray =  jsonArray.getJSONObject(i).getJSONArray("present")
+                var absentJsonArray =  jsonArray.getJSONObject(i).getJSONArray("absent")
+                Log.d("ddd", "Dd" + presentJsonArray.length().toString())
+                for (j in 0 until absentJsonArray.length()) {
+                    absentArray.add(absentJsonArray.getString(j))
+                }
+                for (j in 0 until presentJsonArray.length()) {
+                    presentArray.add(presentJsonArray.getString(j))
+                }
+            }
+        }
+        Log.d("ddd", presentArray.size.toString())
 
         // TextView에 데이터 설정
         val textView = view.findViewById<TextView>(R.id.clickedDate)
@@ -50,21 +85,16 @@ class CalendarDialogFragment : DialogFragment() {
         absentView = view.findViewById(R.id.absentRecyclerView)
 
 
-        // TODO: 데이터 가져오기
-        val data1 = listOf("김민지", "하니","강해린")
-        val data2 = listOf("다니엘",  "혜인")
-//        val data2 : List<String> = listOf()
-
         val attendNumView = view.findViewById<TextView>(R.id.attendNumber)
         val absentNumView = view.findViewById<TextView>(R.id.absentNumber)
-        attendNumView.text = data1.size.toString()
-        absentNumView.text = data2.size.toString()
+        attendNumView.text = presentArray.size.toString()
+        absentNumView.text = absentArray.size.toString()
 
 
 
         // 어댑터 초기화
-        attendAdapter = AttendanceAdapter(data1)
-        absentAdapter = AttendanceAdapter(data2)
+        attendAdapter = AttendanceAdapter(presentArray)
+        absentAdapter = AttendanceAdapter(absentArray)
 
         // 리사이클러뷰 설정
         setupRecyclerView(attendView, attendAdapter)
