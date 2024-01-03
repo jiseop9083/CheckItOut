@@ -53,6 +53,7 @@ class CalendarDialogFragment : DialogFragment() {
         // TODO: 데이터 가져오기
         val data1 = listOf("김민지", "하니","강해린")
         val data2 = listOf("다니엘",  "혜인")
+//        val data2 : List<String> = listOf()
 
         val attendNumView = view.findViewById<TextView>(R.id.attendNumber)
         val absentNumView = view.findViewById<TextView>(R.id.absentNumber)
@@ -104,9 +105,9 @@ class CalendarDialogFragment : DialogFragment() {
         dialog.window?.setLayout(width, height)
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
-        // WindowManager.LayoutParams를 사용하여 상단 마진 추가
+        // WindowManager.LayoutParams
         val layoutParams = dialog.window?.attributes
-        layoutParams?.y = - (height * 0.02).toInt() // 상단 마진 값 (원하는 값으로 조절)
+        layoutParams?.gravity = Gravity.BOTTOM
 
         // add animation
         layoutParams?.windowAnimations = R.style.AnimationPopupStyle
